@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Math Calculator</title>
+  <script>
+    // Paste the JavaScript code here
+    function appendToResult(value) {
+      result.value += value;
+    }
+
+    function calculate() {
+        try {
+            // Define a list of functions to be handled separately
+            const functions = ['sin', 'cos', 'ln', 'log', 'tan', 'sqrt', 'exp', 'square', 'puissance', 'inverse'];
+
+            // Check if the expression contains any declared functions and evaluate them separately
+            if (result.value.match(new RegExp(`(${functions.join('|')})\\([^)]+\\)`, 'g'))) {
+            const functionExpression = result.value.replace(new RegExp(`(${functions.join('|')})\\(([^)]+)\\)`, 'g'), function(match, func, args) {
+                return calculateFunction(func, args);
+            });
+            result.value = eval(functionExpression);
+            } else {
+            result.value = eval(result.value);
+            }
+        } catch (error) {
+            result.value = "Error";
+        }
+    }
+
+    // Function to calculate individual functions
+    function calculateFunction(func, args) {
+        switch (func) {
+            case 'sin':
+            case 'cos':
+            case 'tan':
+            case 'sqrt':
+            case 'exp':
+            case 'square':
+            return Math[func](parseFloat(args)).toFixed(2);
+            case 'ln': 
+            return Math['log'](parseFloat(args)).toFixed(2);
+            case 'log': 
+            return Math['log10'](parseFloat(args)).toFixed(2);
+            case 'puissance':
+            const [base, exponent] = args.split(',');
+            return Math.pow(parseFloat(base), parseFloat(exponent)).toFixed(2);
+            case 'inverse':
+            return (1 / parseFloat(args)).toFixed(2);
+            default:
+            return args; // Default to returning the original arguments if the function is not recognized
+        }
+    }
+
+    function clearResult() {
+      result.value = "";
+    }
+  </script>
+</head>
+<body>
+  <input type="text" id="result" readonly>
+  <br>
+  <button onclick="appendToResult('1')">1</button>
+  <button onclick="appendToResult('2')">2</button>
+  <button onclick="appendToResult('3')">3</button>
+  <button onclick="appendToResult('+')">+</button>
+  <button onclick="appendToResult('sin(')">sin</button>
+  <button onclick="calculate()">=</button>
+  <button onclick="clearResult()">C</button>
+  <br>
+  <button onclick="appendToResult('4')">4</button>
+  <button onclick="appendToResult('5')">5</button>
+  <button onclick="appendToResult('6')">6</button>
+  <button onclick="appendToResult('-')">-</button>
+  <button onclick="appendToResult('cos(')">cos</button>
+  <br>
+  <button onclick="appendToResult('7')">7</button>
+  <button onclick="appendToResult('8')">8</button>
+  <button onclick="appendToResult('9')">9</button>
+  <button onclick="appendToResult('*')">*</button>
+  <button onclick="appendToResult('tan(')">tan</button>
+  <br>
+  <button onclick="appendToResult('0')">0</button>
+  <button onclick="appendToResult(')')">)</button>
+  <button onclick="appendToResult('.')">.</button>
+  <button onclick="appendToResult('/')">/</button>
+  <button onclick="appendToResult('ln(')">ln</button>
+  <br>
+  <button onclick="appendToResult('log(')">log</button>
+  <button onclick="appendToResult('sqrt(')">sqrt</button>
+  <button onclick="appendToResult('exp(')">exp</button>
+  <button onclick="appendToResult('square(')">square</button>
+  <br>
+  <button onclick="appendToResult('puissance(2,3)')">2^3</button>
+  <button onclick="appendToResult('inverse(4)')">1/4</button>
+</body>
+</html>
