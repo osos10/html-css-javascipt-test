@@ -86,8 +86,10 @@ function calculateFunction(func, args) {
         case 'tan':
         case 'sqrt':
         case 'exp':
-        case 'square':
+        case '√':
         return Math[func](parseFloat(args)).toFixed(2);
+        case '√':
+        return Math['sqrt'](parseFloat(args)).toFixed(2);
         case 'ln': 
         return Math['log'](parseFloat(args)).toFixed(2);
         case 'log': 
