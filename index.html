@@ -13,42 +13,42 @@
         <div class="buttons">
             <!-- First Row -->
             <div class="first-row-spacing"></div>
-            <button class="operator" type="button">(</button>
-            <button class="operator" type="button">)</button>
-            <button class="operator" type="button">%</button>
-            <button class="operator" type="button">CE</button>
+            <button class="operator" type="button"  onclick="appendToResult('(')">(</button>
+            <button class="operator" type="button"  onclick="appendToResult(')')">)</button>
+            <button class="operator" type="button"  onclick="appendToResult('%')">%</button>
+            <button class="operator" type="button"  onclick="clearResult()">CE</button>
             <!-- Second Row -->
-            <button class="operator" type="button">Inv</button>
-            <button class="operator" type="button">sin</button>
-            <button class="operator" type="button">ln</button>
-            <button class="number" type="button">7</button>
-            <button class="number" type="button">8</button>
-            <button class="number" type="button">9</button>
+            <button class="operator" type="button " onclick="appendToResult('Inv(')">Inv</button>
+            <button class="operator" type="button" onclick="appendToResult('sin(')">sin</button>
+            <button class="operator" type="button" onclick="appendToResult('ln(')">ln</button>
+            <button class="number" type="button" onclick="appendToResult('7')">7</button>
+            <button class="number" type="button" onclick="appendToResult('8')">8</button>
+            <button class="number" type="button" onclick="appendToResult('9')">9</button>
             <button class="operator" type="button">/</button>
             <!-- Third Row -->
             <button class="operator" type="button">Π</button>
-            <button class="operator" type="button">cos</button>
-            <button class="operator" type="button">log</button>
-            <button class="number" type="button">4</button>
-            <button class="number" type="button">5</button>
-            <button class="number" type="button">6</button>
+            <button class="operator" type="button" onclick="appendToResult('cos(')">cos</button>
+            <button class="operator" type="button" onclick="appendToResult('log(')">log</button>
+            <button class="number" type="button" onclick="appendToResult('4')">4</button>
+            <button class="number" type="button" onclick="appendToResult('5')">5</button>
+            <button class="number" type="button" onclick="appendToResult('6')">6</button>
             <button class="operator" type="button">*</button>
             <!-- Fourth Row -->
             <button class="operator" type="button">e</button>
-            <button class="operator" type="button">tan</button>
-            <button class="operator" type="button">√</button>
-            <button class="number" type="button">3</button>
-            <button class="number" type="button">2</button>
-            <button class="number" type="button">1</button>
-            <button class="operator" type="button">-</button>
+            <button class="operator" type="button" onclick="appendToResult('tan(')">tan</button>
+            <button class="operator" type="button" onclick="appendToResult('√')">√</button>
+            <button class="number" type="button" onclick="appendToResult('3')">3</button>
+            <button class="number" type="button" onclick="appendToResult('2')">2</button>
+            <button class="number" type="button" onclick="appendToResult('1')">1</button>
+            <button class="operator" type="button" onclick="appendToResult('-')">-</button>
             <!-- Fifth Row -->
-            <button class="operator" type="button">exp</button>
-            <button class="operator" type="button">x²</button>
-            <button class="operator" type="button">x^</button>
-            <button class="operator" type="button">.</button>
-            <button class="number" type="button">0</button>
-            <button class="operator" type="button">=</button>
-            <button class="operator" type="button">+</button>
+            <button class="operator" type="button" onclick="appendToResult('exp(')">exp</button>
+            <button class="operator" type="button" onclick="appendToResult('')">x²</button>
+            <button class="operator" type="button" onclick="appendToResult('')">x^</button>
+            <button class="operator" type="button" onclick="appendToResult('.')">.</button>
+            <button class="number" type="button" onclick="appendToResult('0')">0</button>
+            <button class="operator" type="button" onclick="calculate()">=</button>
+            <button class="operator" type="button" onclick="appendToResult('+')">+</button>
             
         </div>
     </div>
