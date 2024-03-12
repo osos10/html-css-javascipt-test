@@ -62,7 +62,7 @@ function appendToResult(value) {
   function calculate() {
     try {
         // Define a list of functions to be handled separately
-        const functions = ['sin', 'cos', 'ln', 'log', 'tan', 'sqrt', 'exp', 'square', 'puissance', 'inverse'];
+        const functions = ['sin', 'cos', 'ln', 'log', 'tan', 'sqrt', 'exp','√', 'square', 'puissance', 'inverse'];
 
         // Check if the expression contains any declared functions and evaluate them separately
         if (result.value.match(new RegExp(`(${functions.join('|')})\\([^)]+\\)`, 'g'))) {
