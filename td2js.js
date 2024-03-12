@@ -62,17 +62,16 @@ function appendToResult(value) {
   function calculate() {
     try {
         // Define a list of functions to be handled separately
-        const functions = ['sin', 'cos', 'ln', 'log', 'tan', 'sqrt', 'exp','√', 'square', 'puissance', 'inverse'];
-
+        const functions = ['sin', 'cos', 'ln', 'log', 'tan', 'sqrt', 'exp','√', 'square', 'puissance', 'Inv'];
+        const percentageRegex = /(\d+(\.\d+)?)%/g;
         // Check if the expression contains any declared functions and evaluate them separately
-        if (result.value.match(new RegExp(`(${functions.join('|')})\\([^)]+\\)`, 'g'))) {
         const functionExpression = result.value.replace(new RegExp(`(${functions.join('|')})\\(([^)]+)\\)`, 'g'), function(match, func, args) {
             return calculateFunction(func, args);
-        });
+        }).replace(percentageRegex, function(match, value) {
+            return value / 100;
+        }).replace(/\^/g, '**').replace(/²/g, '**2').replace(/e/g, 'Math.E').replace(/π/g, 'Math.PI');
+         // Replace caret (^) with double asterisk (**) for power operation
         result.value = eval(functionExpression);
-        } else {
-        result.value = eval(result.value);
-        }
     } catch (error) {
         result.value = "Error";
     }
@@ -93,11 +92,8 @@ function calculateFunction(func, args) {
         return Math['log'](parseFloat(args)).toFixed(2);
         case 'log': 
         return Math['log10'](parseFloat(args)).toFixed(2);
-        case 'puissance':
-        const [base, exponent] = args.split(',');
-        return Math.pow(parseFloat(base), parseFloat(exponent)).toFixed(2);
-        case 'inverse':
-        return (1 / parseFloat(args)).toFixed(2);
+        case 'Inv':
+            return (1 / parseFloat(args)).toFixed(2);
         default:
         return args; // Default to returning the original arguments if the function is not recognized
     }
